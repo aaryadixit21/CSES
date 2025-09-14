@@ -1,0 +1,1 @@
+{"name":"Local: 1CountingRooms","url":"c:\\Users\\ASUS\\OneDrive\\Desktop\\cses\\Graph\\1CountingRooms.cpp","tests":[{"id":1757875836188,"input":"5 8\n########\n#..#...#\n####.#.#\n#..#...#\n########","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\ASUS\\OneDrive\\Desktop\\cses\\Graph\\1CountingRooms.cpp","group":"local","local":true}
