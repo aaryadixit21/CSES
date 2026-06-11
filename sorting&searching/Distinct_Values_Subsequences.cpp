@@ -25,10 +25,7 @@ int dp[1000005];
 int dr[4] = {-1, 1, 0, 0};
 int dc[4] = {0, 0, -1, 1};
 /*---------------------------------*/
-
-void func(){
-   
-}
+int mod = 1e9 + 7;
 
 signed main() {
     ios_base::sync_with_stdio(false);
@@ -37,23 +34,18 @@ signed main() {
     
     int n;
     cin >> n;
-    vector<int> k(n);
-    for(int i = 0; i < n; i++) {
-        cin >> k[i];
+    vector<int> arr(n);
+    map<int, int> freq;
+    for(int i{0}; i<n; ++i){
+        cin >> arr[i];
+        freq[arr[i]]++;
     }
-    int ans=0;
-    int i=0, j=0;
-    set<int>s;
-    while(i < n && j < n) {
-        s.insert(k[j]);
-        if(s.size() == j - i + 1) {
-            ans = max(ans, j - i + 1);
-            j++;
-        }
-        else {
-            s.erase(k[i]);
-            i++;
-        }
+
+    ll ans = 1;
+    for(auto it : freq) {
+        ll count = (ll)it.second;
+        ans += (ans*count) % mod;
     }
-    cout << ans << endl;
+    ans=ans%mod;
+    cout << ans-1 << endl;
 }

@@ -37,23 +37,15 @@ signed main() {
     
     int n;
     cin >> n;
-    vector<int> k(n);
+    multiset<int>s;
     for(int i = 0; i < n; i++) {
-        cin >> k[i];
-    }
-    int ans=0;
-    int i=0, j=0;
-    set<int>s;
-    while(i < n && j < n) {
-        s.insert(k[j]);
-        if(s.size() == j - i + 1) {
-            ans = max(ans, j - i + 1);
-            j++;
+        int k;
+        cin >> k;
+        auto it=s.upper_bound(k);
+        if(it!=s.end()) {
+            s.erase(it);
         }
-        else {
-            s.erase(k[i]);
-            i++;
-        }
+        s.insert(k);
     }
-    cout << ans << endl;
+    cout << s.size() << endl;
 }

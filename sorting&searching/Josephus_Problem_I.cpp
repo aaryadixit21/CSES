@@ -36,24 +36,17 @@ signed main() {
     cout.tie(NULL);
     
     int n;
-    cin >> n;
-    vector<int> k(n);
-    for(int i = 0; i < n; i++) {
-        cin >> k[i];
+    cin >> n;;
+    queue<int>q;
+    for(int i{1}; i<=n; ++i){
+        q.push(i);
     }
-    int ans=0;
-    int i=0, j=0;
-    set<int>s;
-    while(i < n && j < n) {
-        s.insert(k[j]);
-        if(s.size() == j - i + 1) {
-            ans = max(ans, j - i + 1);
-            j++;
-        }
-        else {
-            s.erase(k[i]);
-            i++;
-        }
+    while(!q.empty()){
+        int a=q.front();
+        q.pop();
+        q.push(a);
+        int b=q.front();
+        q.pop();
+        cout << b << " ";
     }
-    cout << ans << endl;
 }

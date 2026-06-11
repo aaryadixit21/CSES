@@ -35,25 +35,23 @@ signed main() {
     cin.tie(NULL);
     cout.tie(NULL);
     
-    int n;
-    cin >> n;
-    vector<int> k(n);
-    for(int i = 0; i < n; i++) {
-        cin >> k[i];
-    }
-    int ans=0;
-    int i=0, j=0;
+    int x,n;
+    cin >> x >> n;
     set<int>s;
-    while(i < n && j < n) {
-        s.insert(k[j]);
-        if(s.size() == j - i + 1) {
-            ans = max(ans, j - i + 1);
-            j++;
-        }
-        else {
-            s.erase(k[i]);
-            i++;
-        }
+    multiset<int>possible;
+    s.insert(0);
+    s.insert(x);
+    possible.insert(x);
+    for(int i{0}; i<n; ++i){
+        int p;
+        cin >> p;
+        auto it=s.upper_bound(p);
+        int b=*it;
+        int a=*(--it);
+        s.insert(p);
+        possible.erase(possible.find(b-a));
+        possible.insert(p-a);
+        possible.insert(b-p);
+        cout << *possible.rbegin() << " ";
     }
-    cout << ans << endl;
 }

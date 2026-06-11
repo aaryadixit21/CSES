@@ -29,7 +29,7 @@ int dc[4] = {0, 0, -1, 1};
 void func(){
    
 }
-
+        
 signed main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -41,19 +41,16 @@ signed main() {
     for(int i = 0; i < n; i++) {
         cin >> k[i];
     }
-    int ans=0;
-    int i=0, j=0;
-    set<int>s;
-    while(i < n && j < n) {
-        s.insert(k[j]);
-        if(s.size() == j - i + 1) {
-            ans = max(ans, j - i + 1);
-            j++;
+    ll ans = 0;
+    int left = 0;
+    map<int, int> freq;
+    for(int right = 0; right < n; right++) {
+        freq[k[right]]++;
+        while(freq[k[right]] > 1) {
+            freq[k[left]]--;
+            left++;
         }
-        else {
-            s.erase(k[i]);
-            i++;
-        }
+        ans += right - left + 1;
     }
     cout << ans << endl;
 }
